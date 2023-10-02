@@ -6,7 +6,7 @@ spec:
   selector:
     matchLabels:
       app: spring-boot-k8s
-  replicas: 2 # Number of replicas that will be created for this deployment
+  replicas: 2
   template:
     metadata:
       labels:
@@ -14,23 +14,21 @@ spec:
     spec:
       containers:
         - name: spring-boot-k8s
-          image: anilpatil46/devops-cicd:latest # Image that will be used to containers in the cluster
+          image: anilpatil46/devops-cicd:latest
           imagePullPolicy: IfNotPresent
           ports:
-            - containerPort: 8080 # The port that the container is running on in the cluster
-
+            - containerPort: 8080
 
 ---
 
-apiVersion: v1 # Kubernetes API version
-kind: Service # Kubernetes resource kind we are creating
-metadata: # Metadata of the resource kind we are creating
+apiVersion: v1
+kind: Service
+metadata:
   name: springboot-k8ssvc
 spec:
   selector:
     app: spring-boot-k8s
   ports:
-    - protocol: "TCP"
-      port: 8080 # The port that the service is running on in the cluster
-      targetPort: 8080 # The port exposed by the service
-  type: NodePort # type of the service.
+    - port: 8080
+      targetPort: 8080
+  type: LoadBalancer 
