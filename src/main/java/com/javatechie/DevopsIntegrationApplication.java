@@ -11,7 +11,7 @@ public class DevopsIntegrationApplication {
 
 	@GetMapping
 	public String message(){
-		return "WELCOME TO DEVOPS SHACK";
+		return "WELCOME TO DEVOPS SHACK By Anil Patil, Lets Learn CICD pipeline";
 	}
 
 	public static void main(String[] args) {
